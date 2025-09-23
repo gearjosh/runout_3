@@ -1,0 +1,11 @@
+<h1 class="font-black font-sans text-4xl mb-4">Albums</h1>
+
+<div class="flex flex-col bg-pink-600">
+  <div id="albums">
+    <% @albums.each do |album| %>
+      <div class="mb-4 p-4">
+        <p class="text-2xl font-sans"><em><%= link_to album.title, album, class: "text-blue-400" %></em> by <%= album.artist %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
