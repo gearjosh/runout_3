@@ -2,10 +2,14 @@
   <img class="size-100" src="<%= @album.cover %>" alt="<%= @album.title %>'s cover">
   <div class="flex flex-col items-end space-y-4">
     <div class="flex flex-col items-end">
-      <h1 class="text-4xl text-bold"><%= @album.title %></h1>
+      <h1 class="text-4xl font-black"><%= @album.title %></h1>
       <h2>by <%= @album.artist %></h2>
     </div>
     <p><%= @album.summary %></p>
-    <%= link_to "Back", albums_path, class: "p-4 bg-pink-500 max-w-fit" %>
+
+    <div class="flex space-x-4">
+      <%= link_to "Back", albums_path, class: "p-4 bg-pink-500 max-w-fit rounded-sm" %>
+      <%= link_to "Edit", edit_album_path(@album), class: "p-4 bg-pink-500 max-w-fit rounded-sm" %>
+    </div>
   </div>
 </div>

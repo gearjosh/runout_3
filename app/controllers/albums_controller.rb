@@ -1,10 +1,11 @@
 class AlbumsController < ApplicationController
+  before_action :set_album, only: %i[ show edit update ]
+
   def index
     @albums = Album.all
   end
 
   def show
-    @album = Album.find(params[:id])
   end
 
   def new
@@ -20,7 +21,22 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @album.update(album_params)
+      redirect_to @album
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
+  def set_album
+    @album = Album.find(params[:id])
+  end
+
   def album_params
     params.expect(album: [ :title, :artist, :summary, :cover ])
   end
