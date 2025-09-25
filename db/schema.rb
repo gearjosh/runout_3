@@ -17,27 +17,39 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_23_200259) do
   create_table "albums", force: :cascade do |t|
     t.string "title"
     t.string "artist"
+    t.text "tracklist", default: [], array: true
+    t.string "cover"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "summary"
-    t.text "tracklist", default: [], array: true
-    t.text "cover"
-    t.text "genres", default: [], array: true
+    t.text "genre_tags", default: [], array: true
   end
 
   create_table "likes", force: :cascade do |t|
+    t.bigint "listen_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "album_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_likes_on_album_id"
+    t.index ["listen_id"], name: "index_likes_on_listen_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "listens", force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.bigint "user_id", null: false
     t.integer "rating"
     t.text "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_listens_on_album_id"
+    t.index ["user_id"], name: "index_listens_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followee_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

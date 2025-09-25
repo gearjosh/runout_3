@@ -1,0 +1,27 @@
+<h1 class="text-4xl text-bold">New Album</h1>
+
+<%= form_with model: @album do |form| %>
+  <div class="flex flex-col space-y-2">
+    <div class="flex flex-col space-y-2">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "bg-gray-200 text-black p-2 rounded-sm" %>
+    </div>
+  
+    <div class="flex flex-col space-y-2">
+      <%= form.label :artist %>
+      <%= form.text_field :artist, class: "bg-gray-200 text-black p-2 rounded-sm" %>
+    </div>
+  
+    <div class="flex flex-col space-y-2">
+      <%= form.label :summary %>
+      <%= form.text_field :summary, class: "bg-gray-200 text-black p-2 rounded-sm" %>
+    </div>
+  
+    <div class="flex flex-col space-y-2">
+      <%= form.label :cover %>
+      <%= form.text_field :cover, placeholder: "Link to Image", class: "bg-gray-200 text-black p-2 rounded-sm" %>
+    </div>
+    
+    <%= form.submit class: "p-4 bg-pink-500 max-w-fit mt-4" %>
+  </div>
+<% end %>
