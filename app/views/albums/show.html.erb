@@ -7,6 +7,7 @@
           <h2>by <%= @album.artist %></h2>
       </div>
       <p><%= @album.summary %></p>
+      <p><%= @album.likes.count %> Likes</p>
     <% end %>
 
     <div class="flex space-x-4">
