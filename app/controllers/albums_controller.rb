@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
-  before_action :set_album, only: %i[ show edit update ]
+  allow_unauthenticated_access only: %i[ index show ]
+  before_action :set_album, only: %i[ show edit update destroy ]
 
   def index
     @albums = Album.all
@@ -30,6 +31,11 @@ class AlbumsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @album.destroy
+    redirect_to albums_path
   end
 
   private

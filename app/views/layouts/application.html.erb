@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= content_for(:title) || "The Runout" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -23,11 +23,14 @@
   </head>
 
   <body class="bg-gray-900 text-gray-300">
-    <nav class="h-20 sticky flex flex-row justify-between bg-blue-600">
-      <img src="" class="object-contain w-full"/>
-      <div class="flex space-x-2 items-end p-4">
+    <nav class="h-20 sticky flex flex-row justify-between items-end p-4 bg-blue-600">
+      <%# <img src="" class="object-contain w-full"/> %>
+      <%= link_to "Home", albums_path %>
+      <div class="flex space-x-2 items-end">
         <a href="#">Profile</a>
         <a href="#">About</a>
+        <%= link_to "Login", new_session_path, class: "py-2 px-4 bg-pink-500 rounded-full" unless authenticated? %>
+        <%= button_to "Logout", session_path, method: :delete, class: "py-2 px-4 bg-pink-500 rounded-full cursor-pointer" if authenticated? %>
       </div>
     </nav>
     <main class="container mx-auto mt-4 px-4 flex flex-col">
